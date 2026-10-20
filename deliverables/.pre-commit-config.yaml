@@ -1,0 +1,24 @@
+# Lite subset: trailing whitespace, end of file, and YAML parse.
+# 精简版：行尾空白、文件末尾换行、YAML 解析。
+# language: system runs local scripts. Check upstream docs before you
+# add a remote repo or a revision pin.
+# JSON, black, ruff, and shellcheck live in the full pack.
+
+repos:
+  - repo: local
+    hooks:
+      - id: trailing-whitespace
+        name: trailing whitespace
+        entry: python3 hooks/trailing_whitespace.py
+        language: system
+        types: [text]
+      - id: end-of-file-fixer
+        name: end of file
+        entry: python3 hooks/end_of_file.py
+        language: system
+        types: [text]
+      - id: check-yaml
+        name: check yaml
+        entry: python3 hooks/check_yaml.py
+        language: system
+        types: [yaml]
